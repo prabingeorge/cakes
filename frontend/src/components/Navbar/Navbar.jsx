@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import "./Navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
-import { FaMagnifyingGlass, FaBasketShopping, FaUserLarge, FaBagShopping, FaArrowRightLong } from "react-icons/fa6";
-import logoHeader from "../../assets/icons/logo-header.png";
+import { assets } from '../../assets/assets';
 
 const Navbar = ({ setShowLogin }) => {
 
@@ -22,7 +21,7 @@ const Navbar = ({ setShowLogin }) => {
         <div className='navbar'>
             <Link to="/">
                 {/* <p>Amora</p> */}
-                <img src={logoHeader} alt='logo' className='logo' />
+                <img src={assets.logo} alt='logo' className='logo' />
             </Link>
             <ul className='navbar-menu'>
                 <Link to='/' onClick={() => setMenu("home")} className={menu === 'home' ? "active" : ""}>home</Link>
@@ -31,29 +30,24 @@ const Navbar = ({ setShowLogin }) => {
                 <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === 'contact-us' ? "active" : ""}>contact us</a>
             </ul>
             <div className="navbar-right">
-                <FaMagnifyingGlass />
-                {/* <img src="search" alt="search" /> */}
+                <img src={assets.search_icon} alt="search" />
                 <div className="navbar-search-icon">
                     <Link to='/cart'>
-                        <FaBasketShopping />
-                        {/* <img src="basket" alt="basket icon" /> */}
+                        <img src={assets.basket_icon} alt="basket icon" />
                     </Link>
                     <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
                 </div>
                 {!token ? <button onClick={() => setShowLogin(true)}>sign in</button>
                     : <div className='navbar-profile'>
-                        <FaUserLarge />
-                        {/* <img src="profileicon" alt="profileicon" /> */}
+                        <img src={assets.profile_icon} alt="profileicon" />
                         <ul className="nav-profile-dropdown">
                             <li onClick={() => navigate("/myorders")}>
-                                {/* <img src="bagicon" alt="bagicon" /> */}
-                                <FaBagShopping />
+                                <img src={assets.bag_icon} alt="bagicon" />
                                 <p>Orders</p>
                             </li>
                             <hr />
                             <li onClick={logout}>
-                                {/* <img src="logout" alt="logout" /> */}
-                                <FaArrowRightLong />
+                                <img src={assets.logout_icon} alt="logout" />
                                 <p>Logout</p></li>
                         </ul>
                     </div>}

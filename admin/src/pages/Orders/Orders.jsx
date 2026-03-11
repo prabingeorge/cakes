@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Orders.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { FaCartShopping } from "react-icons/fa6";
+import { assets } from '../../assets/assets';
 
 const Order = ({ url }) => {
 
@@ -45,8 +45,7 @@ const Order = ({ url }) => {
       <div className="order-list">
         {orders.map((order, index) => (
           <div key={index} className='order-item'>
-            <FaCartShopping />
-            {/* <img src="parcel_icon" alt="parcel_icon" /> */}
+            <img src={assets.parcel_icon} alt="parcel_icon" />
             <div>
               <p className='order-item-food'>
                 {order.items.map((item, index) => {

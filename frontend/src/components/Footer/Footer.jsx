@@ -1,22 +1,18 @@
 import React from 'react';
 import './Footer.css';
-import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa6";
-import logoFooter from "../../assets/icons/amora-logo.png";
+import { assets } from '../../assets/assets';
 
 const Footer = () => {
   return (
     <div className='footer' id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img className='company-logo' src={logoFooter} alt='logo' />
+          <img className='company-logo' src={assets.logo} alt='logo' />
           <p>Footer for the application</p>
           <div className="footer-social-icons">
-            {/* <img src="fb" alt="facebook" />
-            <img src="tw" alt="twitter" />
-            <img src="link" alt="linkedin" /> */}
-            <FaFacebook />
-            <FaTwitter />
-            <FaLinkedin />
+            <img src={assets.facebook_icon} alt="facebook" />
+            <img src={assets.twitter_icon} alt="twitter" />
+            <img src={assets.linkedin_icon} alt="linkedin" />
           </div>
         </div>
         <div className="footer-content-center">
@@ -37,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">Copyright 2026 @ Tomato.com - All Right Deserved.</p>
+      <p className="footer-copyright">Copyright 2026 @ amo-ra.com - All Right Deserved.</p>
     </div>
   )
 }

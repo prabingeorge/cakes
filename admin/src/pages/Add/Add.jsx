@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Add.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { FaUpload } from "react-icons/fa6";
+import { assets } from '../../assets/assets';
 
-const Add = ({url}) => {
+const Add = ({ url }) => {
 
   const [image, setImage] = useState(false);
 
@@ -12,7 +12,7 @@ const Add = ({url}) => {
     name: "",
     description: "",
     price: "",
-    category: "tiffin"
+    category: "egg"
   });
 
   const onChangeHandler = (event) => {
@@ -35,7 +35,7 @@ const Add = ({url}) => {
         name: "",
         description: "",
         price: "",
-        category: "tiffin"
+        category: "egg"
       });
       setImage(false);
       toast.success(response?.data?.message);
@@ -50,8 +50,7 @@ const Add = ({url}) => {
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
-            {!image? <FaUpload />:<img src={image ? URL.createObjectURL(image) : "<FaUpload />"} alt="uploadarea" /> }
-            {/* <img src={image ? URL.createObjectURL(image) : 'uploadarea'} alt="uploadarea" /> */}
+            <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt="uploadarea" />
           </label>
           <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden required />
         </div>
@@ -67,10 +66,8 @@ const Add = ({url}) => {
           <div className="add-category flex-col">
             <p>Product category</p>
             <select onChange={onChangeHandler} name="category">
-              <option value="tiffin">Tiffin</option>
-              <option value="meal">Meal</option>
-              <option value="nonvegmeal">Non-veg Meal</option>
-              <option value="biriyani">Biriyani</option>
+              <option value="egg">Egg</option>
+              <option value="eggless">Eggless</option>
             </select>
           </div>
           <div className="add-price flex-col">

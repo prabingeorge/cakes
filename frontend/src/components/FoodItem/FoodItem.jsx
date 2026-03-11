@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './FoodItem.css';
 import { StoreContext } from '../../context/StoreContext';
-import { FaRegSquareMinus , FaRegSquarePlus } from "react-icons/fa6";
+import { assets } from '../../assets/assets';
 
 const FoodItem = ({ id, name, price, description, image }) => {
 
@@ -12,14 +12,11 @@ const FoodItem = ({ id, name, price, description, image }) => {
             <div className="food-item-img-container">
                 <img className='food-item-image' src={appUrl + "/images/" + image} alt="" />
                 {!cartItems || !cartItems[id]
-                    // ? <img className='add' onClick={() => addToCart(id)} src="" alt="Add" />
-                    ? <FaRegSquarePlus className='add' onClick={() => addToCart(id)} />
+                    ? <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_green} alt="Add" />
                     : <div className='food-item-counter'>
-                        {/* <img onClick={() => removeFromCart(id)} src="" alt="remove" /> */}
-                        <FaRegSquareMinus onClick={() => removeFromCart(id)} />
+                        <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt="remove" />
                         <p>{cartItems[id]}</p>
-                        {/* <img onClick={() => addToCart(id)} src="" alt='add1' /> */}
-                        <FaRegSquarePlus onClick={() => addToCart(id)} />
+                        <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt='add' />
                     </div>
                 }
             </div>

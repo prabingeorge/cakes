@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './MyOrders.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
-import { FaCartShopping } from "react-icons/fa6";
+import { assets } from '../../assets/assets';
 
 const MyOrders = () => {
 
@@ -31,8 +31,7 @@ const MyOrders = () => {
                 {data.map((order, index) => {
                     return (
                         <div key={index} className='my-orders-order'>
-                            {/* <img src="parcelicon" alt="parcelicon" /> */}
-                            <FaCartShopping />
+                            <img src={assets.parcel_icon} alt="parcelicon" />
                             <p>{order?.items.map((item, index) => {
                                 if (index === order.items.length - 1) {
                                     return item.name + " X " + item?.quantity

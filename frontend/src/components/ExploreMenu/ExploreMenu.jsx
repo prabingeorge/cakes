@@ -1,16 +1,14 @@
 import React from 'react';
 import './ExploreMenu.css';
 
-const menu_list = [{ menu_name: "tiffin", menu_image: "tiffin.jpg" },
-{ menu_name: "meal", menu_image: "meal.jpg" },
-{ menu_name: "nonvegmeal", menu_image: "nonveg.jpg" },
-{ menu_name: "biriyani", menu_image: "biriyani.jpg" }];
+const menu_list = [{ menu_name: "egg", menu_image: "egg.jpg" },
+{ menu_name: "eggless", menu_image: "eggless.jpg" }];
 
 const ExploreMenu = ({ category, setCategory }) => {
     return (
         <div className='explore-menu' id='explore-menu'>
-            <h1>Explore our menu</h1>
-            <p className='explore-menu-text'>Here is our menu</p>
+            <h1>Explore our cakes</h1>
+            <p className='explore-menu-text'>Here is our cakes with yammy taste.</p>
             <div className="explore-menu-list">
                 {menu_list?.map((item, index) => {
                     return (<div onClick={() => setCategory(prev => prev === item.menu_name ? "All" : item?.menu_name)} key={index} className='explore-menu-list-item'>

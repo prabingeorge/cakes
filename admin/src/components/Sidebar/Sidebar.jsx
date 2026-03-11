@@ -1,25 +1,22 @@
 import React from 'react';
 import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
-import { FaPlus, FaRectangleList, FaCartShopping } from "react-icons/fa6";
+import { assets } from '../../assets/assets';
 
 const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className="sidebar-options">
         <NavLink to='/add' className="sidebar-option">
-          {/* <img src="addicon" alt="addicon" /> */}
-          <FaPlus />
+          <img src={assets.add_icon} alt="addicon" />
           <p>Add Items</p>
         </NavLink>
         <NavLink to='/list' className="sidebar-option">
-          {/* <img src="ordericon" alt="ordericon" /> */}
-          <FaRectangleList />
+          <img src={assets.order_icon} alt="ordericon" />
           <p>List Items</p>
         </NavLink>
         <NavLink to='/orders' className="sidebar-option">
-          {/* <img src="ordericon" alt="ordericon" /> */}
-          <FaCartShopping />
+          <img src={assets.order_icon} alt="ordericon" />
           <p>Orders</p>
         </NavLink>
       </div>
