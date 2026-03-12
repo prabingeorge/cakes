@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const PlaceOrder = () => {
 
   const navigate = useNavigate();
-  const { getTotalCartAmount, token, food_list, cartItems, appUrl } = useContext(StoreContext);
+  const { getTotalCartAmount, token, foodList, cartItems, appUrl } = useContext(StoreContext);
 
   const [data, setData] = useState({
     firstName: "",
@@ -30,7 +30,7 @@ const PlaceOrder = () => {
   const placeOrder = async (event) => {
     event.preventDefault();
     let orderItems = [];
-    food_list.map((item) => {
+    foodList.map((item) => {
       if (cartItems[item._id] > 0) {
         let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];

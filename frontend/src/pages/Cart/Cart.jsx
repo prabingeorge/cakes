@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Cart = () => {
 
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount, appUrl, token } = useContext(StoreContext)
+  const { cartItems, foodList, removeFromCart, getTotalCartAmount, appUrl, token } = useContext(StoreContext)
   const navigate = useNavigate();
 
   const proceedToCheckout = () => {
@@ -31,7 +31,7 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list?.map((item, index) => {
+        {foodList?.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
               <div key={index}>

@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Add.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
 
-  const menu_list = [{ menu_name: "chocolate", menu_image: "chocolate.avif", display_name: "Chocolate" },
-  { menu_name: "vanilla", menu_image: "vanilla.avif", display_name: "Vanilla" }];
-
 const Add = ({ url }) => {
 
+  const [menuList, setMenuList] = useState([]);
   const [image, setImage] = useState(false);
   const initialData = {
     name: "",
@@ -43,6 +41,18 @@ const Add = ({ url }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchList = async () => {
+      const respone = await axios.get(`${url}/api/menu/menu-list`);
+      if (respone?.data?.success) {
+        setMenuList(respone?.data?.data);
+      } else {
+        toast.error("Error");
+      }
+    }
+    fetchList();
+  }, []);
+
   return (
     <div className='add'>
       <form className='flex-col' onSubmit={onSubmitHandler}>
@@ -65,8 +75,8 @@ const Add = ({ url }) => {
           <div className="add-category flex-col">
             <p>Product category</p>
             <select onChange={onChangeHandler} name="category">
-              {menu_list?.map((menu, index)=>{
-                return (<option key={index} value={menu.menu_name}>{menu.display_name}</option>)
+              {menuList?.map((menu, index) => {
+                return (<option key={index} value={menu.category}>{menu.name}</option>)
               })}
             </select>
           </div>

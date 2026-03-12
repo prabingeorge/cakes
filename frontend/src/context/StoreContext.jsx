@@ -8,7 +8,8 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const appUrl = import.meta.env.VITE_API_URL;
     const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : "");
-    const [food_list, setFoodList] = useState([]);
+    const [menuList, setMenuList] = useState([]);
+    const [foodList, setFoodList] = useState([]);
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -32,7 +33,7 @@ const StoreContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = food_list.find((product) => product._id == item);
+                let itemInfo = foodList.find((product) => product._id == item);
                 totalAmount += itemInfo?.price * cartItems[item];
             }
 
@@ -40,10 +41,14 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
+    const fetchMenuList = async () => {
+        const response = await axios.get(appUrl + "/api/menu/menu-list");
+        setMenuList(response?.data?.data);
+    }
+
     const fetchFoodList = async () => {
         const response = await axios.get(appUrl + "/api/food/list");
         setFoodList(response?.data?.data);
-
     }
 
     const loadCartData = async()=>{
@@ -61,6 +66,7 @@ const StoreContextProvider = (props) => {
         // }
 
         async function loadData() {
+            await fetchMenuList();
             await fetchFoodList();
             loadCartData();
         }
@@ -68,7 +74,8 @@ const StoreContextProvider = (props) => {
     }, []);
 
     const contextValue = {
-        food_list,
+        menuList,
+        foodList,
         cartItems,
         setCartItems,
         addToCart,
