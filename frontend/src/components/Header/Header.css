@@ -1,8 +1,8 @@
 .header {
-    height: 34vw;
+    height: 40vw;
     margin: 30px auto;
-    background: url('./../../assets/header_img.png') no-repeat;
-    background-size: contain;
+    background: url('./../../assets/jonbakes-desktop.png') no-repeat;
+    background-size: cover;
     position: relative;
 }
 
@@ -18,7 +18,7 @@
     animation: fadeIn 3s;
 }
 
-.header-contents h2{
+.header-contents h2 {
     font-weight: 500;
     color: #fff;
     font-size: max(4.5vw, 22px);
@@ -46,12 +46,23 @@
 }
 
 @media (max-width: 750px) {
+    .header {
+        height: 100vw;
+        margin: 30px auto;
+        background: url('./../../assets/jonbakes-mobile.png') no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
     .header-contents {
         max-width: 65%;
+        bottom: 63%;
     }
+
     .header-contents p {
         display: none;
     }
+
     .header-contents button {
         padding: 2vw 4vw;
     }

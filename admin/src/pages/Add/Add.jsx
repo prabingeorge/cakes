@@ -4,16 +4,20 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
 
+  const menu_list = [{ menu_name: "chocolate", menu_image: "chocolate.avif", display_name: "Chocolate" },
+  { menu_name: "vanilla", menu_image: "vanilla.avif", display_name: "Vanilla" }];
+
 const Add = ({ url }) => {
 
   const [image, setImage] = useState(false);
-
-  const [data, setData] = useState({
+  const initialData = {
     name: "",
     description: "",
     price: "",
-    category: "egg"
-  });
+    category: "chocolate"
+  };
+
+  const [data, setData] = useState(initialData);
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -31,12 +35,7 @@ const Add = ({ url }) => {
     formData.append("image", image);
     const response = await axios.post(`${url}/api/food/add`, formData);
     if (response?.data.success) {
-      setData({
-        name: "",
-        description: "",
-        price: "",
-        category: "egg"
-      });
+      setData(initialData);
       setImage(false);
       toast.success(response?.data?.message);
     } else {
@@ -66,13 +65,14 @@ const Add = ({ url }) => {
           <div className="add-category flex-col">
             <p>Product category</p>
             <select onChange={onChangeHandler} name="category">
-              <option value="egg">Egg</option>
-              <option value="eggless">Eggless</option>
+              {menu_list?.map((menu, index)=>{
+                return (<option key={index} value={menu.menu_name}>{menu.display_name}</option>)
+              })}
             </select>
           </div>
           <div className="add-price flex-col">
             <p>Product price</p>
-            <input onChange={onChangeHandler} value={data?.price} type="Number" name="price" placeholder='$20' />
+            <input onChange={onChangeHandler} value={data?.price} type="Number" name="price" placeholder='Rs. 20' />
           </div>
         </div>
         <button type="submit" className='add-btn'>ADD</button>

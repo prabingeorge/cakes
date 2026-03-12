@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { assets } from '../../assets/assets';
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
   return (
@@ -18,22 +19,30 @@ const Footer = () => {
         <div className="footer-content-center">
           <h2>COMPANY</h2>
           <ul>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Delivery</li>
-            <li>Privacy policy</li>
+            <li>
+              <HashLink smooth to='/#root'>Home</HashLink>
+            </li>
+            <li>
+              <HashLink smooth to='/aboutus/#root'>About us</HashLink>
+            </li>
+            <li>
+              <HashLink smooth to='/delivery/#root'>Delivery</HashLink>
+            </li>
+            <li>
+              <HashLink smooth to='/privacy/#root'>Privacy policy</HashLink>
+            </li>
           </ul>
         </div>
         <div className="footer-content-right">
           <h2>GET IN TOUCH</h2>
           <ul>
-            <li>+1-222-1111</li>
-            <li>contact@gmail.com</li>
+            <li>+91 7598 451 524</li>
+            <li>jonbakes@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">Copyright 2026 @ amo-ra.com - All Right Deserved.</p>
+      <p className="footer-copyright">Copyright 2026 @jonbakes.com - All Right Deserved.</p>
     </div>
   )
 }

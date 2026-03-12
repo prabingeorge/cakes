@@ -1,0 +1,45 @@
+.privacy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.privacy h1 {
+    color: #262626;
+    font-weight: 500;
+}
+
+.privacy-text {
+    max-width: 60%;
+    columns: #808080;
+}
+
+.privacy-text span {
+    font-weight: 600;
+}
+
+.privacy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+.privacy-list-item {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+@media (max-width: 1050px) {
+    .privacy-text {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .privacy-list {
+        justify-content: space-between;
+    }
+}

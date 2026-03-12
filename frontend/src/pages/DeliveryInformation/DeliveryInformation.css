@@ -1,0 +1,46 @@
+.delivery-information {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.delivery-information h1 {
+    color: #262626;
+    font-weight: 500;
+}
+
+.delivery-information-text {
+    max-width: 60%;
+    columns: #808080;
+}
+
+.delivery-information-text span {
+    font-weight: 600;
+}
+
+.delivery-information-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+.delivery-information-list-item {
+    cursor: pointer;
+    transition: 0.2s;
+    list-style: none;
+}
+
+@media (max-width: 1050px) {
+    .delivery-information-text {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .delivery-information-list {
+        justify-content: space-between;
+    }
+}

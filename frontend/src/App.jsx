@@ -9,6 +9,9 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders';
 import { ToastContainer } from 'react-toastify';
+import AboutUs from './pages/AboutUs/AboutUs';
+import DeliveryInformation from './pages/DeliveryInformation/DeliveryInformation';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -24,6 +27,9 @@ const App = () => {
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/verify' element={<Verify />} />
           <Route path='/myorders' element={<MyOrders />} />
+          <Route path='/aboutus' element={<AboutUs />} />
+          <Route path='/delivery' element={<DeliveryInformation />} />
+          <Route path='/privacy' element={<PrivacyPolicy />} />
         </Routes>
       </div>
       <Footer />
