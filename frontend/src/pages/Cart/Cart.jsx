@@ -36,7 +36,7 @@ const Cart = () => {
             return (
               <div key={index}>
                 <div className='cart-items-title cart-items-item'>
-                  <img src={ appUrl + "/images/" + item?.image} alt="" />
+                  <img src={`${appUrl}/api/food/image/${item?._id}`} alt={item?.name} />
                   <p>{item?.name}</p>
                   <p>Rs. {item?.price}</p>
                   <p>{cartItems[item?._id]}</p>

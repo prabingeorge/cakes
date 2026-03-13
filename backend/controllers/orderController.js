@@ -92,7 +92,7 @@ const userOrders = async (req, res) => {
 // Listing orders for admin panel
 const listOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
+        const orders = await orderModel.find({}).sort({'_id': -1});
         res.json({ success: true, data: orders });
     } catch (error) {
         console.log(error);

@@ -34,6 +34,7 @@ const PlaceOrder = () => {
       if (cartItems[item._id] > 0) {
         let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];
+        delete itemInfo?.img;
         orderItems.push(itemInfo);
       }
     });
@@ -74,10 +75,10 @@ const PlaceOrder = () => {
           <input required name='state' onChange={onChangeHandler} value={data?.state} type="text" placeholder='State' />
         </div>
         <div className="multi-fields">
-          <input required name='zipcode' onChange={onChangeHandler} value={data?.zipcode} type="text" placeholder='Zip code' />
+          <input required name='zipcode' onChange={onChangeHandler} value={data?.zipcode} type="text" placeholder='Zip code' maxLength="6" />
           <input required name='country' onChange={onChangeHandler} value={data?.country} type="text" placeholder='Country' />
         </div>
-        <input required name='phone' onChange={onChangeHandler} value={data?.phone} type="text" placeholder='Phone' />
+        <input required name='phone' onChange={onChangeHandler} value={data?.phone} type="text" placeholder='Phone' maxLength="10" />
       </div>
       <div className='place-order-right'>
         <div className="cart-total">

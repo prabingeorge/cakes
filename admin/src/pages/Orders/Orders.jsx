@@ -50,9 +50,9 @@ const Order = ({ url }) => {
               <p className='order-item-food'>
                 {order.items.map((item, index) => {
                   if (index === order.items.length - 1) {
-                    return item.name + " X " + item.quantity
+                    return (<p>{item.name } <span>X</span> {item.quantity}</p>)
                   } else {
-                    return item.name + " X " + item.quantity + ", "
+                    return (<p>{item.name } <span>X</span> {item.quantity}</p>)
                   }
                 })}
               </p>
