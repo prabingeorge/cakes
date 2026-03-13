@@ -41,7 +41,7 @@ const MenuList = ({url}) => {
 
   return (
     <div className='list add flex-col'>
-      <p>All Cakes List</p>
+      <p>All Menu List</p>
       <div className="list-table">
         <div className="list-table-format title">
           <b>Image</b>
@@ -52,7 +52,7 @@ const MenuList = ({url}) => {
         {list?.map((item, index) => {
           return (
             <div key={index} className='list-table-format'>
-              <img src={`${url}/images-menu/`+item?.image} alt="" />
+              <img src={`${url}/api/menu/menu-image/${item?._id}`} alt={item?.name} />
               <p>{item?.name}</p>
               <p>{item?.category}</p>
               <p onClick={()=>removeMenu(item?._id)} className='cursor'>X</p>

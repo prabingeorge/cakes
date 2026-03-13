@@ -12,7 +12,7 @@ const Add = ({ url }) => {
     name: "",
     description: "",
     price: "",
-    category: "chocolate"
+    category: ""
   };
 
   const [data, setData] = useState(initialData);
@@ -75,6 +75,7 @@ const Add = ({ url }) => {
           <div className="add-category flex-col">
             <p>Product category</p>
             <select onChange={onChangeHandler} name="category">
+              <option key={-1} >-Select-</option>
               {menuList?.map((menu, index) => {
                 return (<option key={index} value={menu.category}>{menu.name}</option>)
               })}

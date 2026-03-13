@@ -11,6 +11,10 @@ const addMenu = async (req, res) => {
         name: req.body.name,
         category: req.body.category,
         image: image_filename,
+        img: {
+            data: fs.readFileSync(req.file.path),
+            contentType: req.file.mimetype
+        },
         isShow: true
     });
     try {
@@ -20,6 +24,14 @@ const addMenu = async (req, res) => {
         console.log(error);
         res.json({ success: false, message: "Error" });
     }
+};
+
+// get menu image
+const getMenuImage = async (req, res) => {
+    const image = await menuModel.findById(req.params.id);
+
+    res.set("Content-Type", image.img.contentType);
+    res.send(image.img.data);
 };
 
 // all menu list
@@ -47,4 +59,4 @@ const removeMenu = async (req, res) => {
     }
 };
 
-export { addMenu, listMenu, removeMenu };
+export { addMenu, getMenuImage, listMenu, removeMenu };

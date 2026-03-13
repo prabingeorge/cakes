@@ -1,5 +1,5 @@
 import express from 'express';
-import { addMenu, listMenu, removeMenu } from '../controllers/menuController.js';
+import { addMenu, getMenuImage, listMenu, removeMenu } from '../controllers/menuController.js';
 import multer from 'multer';
 
 const menuRouter = express.Router();
@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 menuRouter.post("/menu-add", upload.single("image"), addMenu);
+menuRouter.get("/menu-image/:id", getMenuImage);
 menuRouter.get("/menu-list", listMenu);
 menuRouter.post("/menu-remove", removeMenu);
 

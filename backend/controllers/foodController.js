@@ -12,7 +12,11 @@ const addFood = async (req, res) => {
         description: req.body.description,
         price: req.body.price,
         category: req.body.category,
-        image: image_filename
+        image: image_filename,
+        img: {
+            data: fs.readFileSync(req.file.path),
+            contentType: req.file.mimetype
+        }
     });
     try {
         await food.save();
@@ -21,6 +25,14 @@ const addFood = async (req, res) => {
         console.log(error);
         res.json({ success: false, message: "Error" });
     }
+};
+
+// get food image
+const getFoodImage = async (req, res) => {
+  const image = await foodModel.findById(req.params.id);
+
+  res.set("Content-Type", image.img.contentType);
+  res.send(image.img.data);
 };
 
 // all food list
@@ -48,4 +60,4 @@ const removeFood = async (req, res) => {
     }
 };
 
-export { addFood, listFood, removeFood };
+export { addFood, getFoodImage, listFood, removeFood };
