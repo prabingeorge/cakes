@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Cart = () => {
 
-  const { cartItems, foodList, removeFromCart, getTotalCartAmount, appUrl, token } = useContext(StoreContext)
+  const { cartItems, foodList, removeFromCart, totalCartAmount, appUrl, token } = useContext(StoreContext)
   const navigate = useNavigate();
 
   const proceedToCheckout = () => {
@@ -24,24 +24,36 @@ const Cart = () => {
         <div className="cart-items-title">
           <p>Item</p>
           <p>Title</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
-          <p>Remove</p>
+          <div>
+            <div className='cart-items-food'>
+              <p>Price</p>
+              <p>Quantity</p>
+              <p>Total</p>
+              <p>Remove</p>
+            </div>
+          </div>
         </div>
         <br />
         <hr />
         {foodList?.map((item, index) => {
-          if (cartItems[item._id] > 0) {
+          if (cartItems[item._id]?.length > 0) {
             return (
               <div key={index}>
                 <div className='cart-items-title cart-items-item'>
                   <img src={`${appUrl}/api/food/image/${item?._id}`} alt={item?.name} />
                   <p>{item?.name}</p>
-                  <p>Rs. {item?.price}</p>
-                  <p>{cartItems[item?._id]}</p>
-                  <p>Rs. {item?.price * cartItems[item?._id]}</p>
-                  <p onClick={()=>removeFromCart(item?._id)} className='cross'>x</p>
+                  <div>
+                    {cartItems[item?._id]?.map((food, index) => {
+                      return (
+                        <div key={index} className='cart-items-food'>
+                          <p>Rs. {item?.price}</p>
+                          <p>{food?.weight}kg</p>
+                          <p>Rs. {item?.price * food?.weight * 2}</p>
+                          <p onClick={() => removeFromCart(item?._id, food)} className='cross'>x</p>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
                 <hr />
               </div>
@@ -55,20 +67,20 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>Rs. {getTotalCartAmount()}</p>
+              <p>Rs. {totalCartAmount}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>Rs. {getTotalCartAmount()===0?0:2}</p>
+              <p>Rs. {totalCartAmount === 0 ? 0 : 20}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>Rs. {getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>Rs. {totalCartAmount === 0 ? 0 : totalCartAmount + 20}</b>
             </div>
           </div>
-            <button onClick={()=>proceedToCheckout()}>PROCEED TO CHECKOUT</button>
+          <button onClick={() => proceedToCheckout()}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>

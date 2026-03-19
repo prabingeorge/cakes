@@ -1,24 +1,30 @@
 import React, { useContext } from 'react';
 import './FoodItem.css';
+import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
-import { assets } from '../../assets/assets';
+// import { assets } from '../../assets/assets';
 
 const FoodItem = ({ id, name, price, description, image }) => {
 
-    const { cartItems, addToCart, removeFromCart, appUrl } = useContext(StoreContext);
+    const navigate = useNavigate();
+    const { appUrl } = useContext(StoreContext);
+
+    const navigateItemDetails = (id) => {
+        navigate('/details/' + id);
+    };
 
     return (
-        <div className='food-item'>
+        <div className='food-item' onClick={() => navigateItemDetails(id)}>
             <div className="food-item-img-container">
                 <img className='food-item-image' src={`${appUrl}/api/food/image/${id}`} alt={name} />
-                {!cartItems || !cartItems[id]
+                {/* {!cartItems || !cartItems[id]
                     ? <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_green} alt="Add" />
                     : <div className='food-item-counter'>
                         <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt="remove" />
                         <p>{cartItems[id]}</p>
                         <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt='add' />
                     </div>
-                }
+                } */}
             </div>
             <div className="food-item-info">
                 <div className="food-item-name-rating">

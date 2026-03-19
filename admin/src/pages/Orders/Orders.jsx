@@ -47,19 +47,30 @@ const Order = ({ url }) => {
           <div key={index} className='order-item'>
             <img src={assets.parcel_icon} alt="parcel_icon" />
             <div>
-              <p className='order-item-food'>
+              <div className='order-item-food'>
                 {order.items.map((item, index) => {
-                  if (index === order.items.length - 1) {
-                    return (<p>{item.name } <span>X</span> {item.quantity}</p>)
-                  } else {
-                    return (<p>{item.name } <span>X</span> {item.quantity}</p>)
-                  }
+                  return (
+                    <div key={index}>
+                      <p>{item.name} <span>X</span> {item.quantity}</p>
+                      {item[item._id]?.map((orderInfo, index) => {
+                        return (
+                          <div key={index} className='item-list'>
+                            <div>
+                              Weight: <span>{orderInfo.weight} kg</span>
+                            </div>
+                            <div>
+                              Message: <span>{orderInfo.message}</span>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>)
                 })}
-              </p>
-              <p className='order-item-name'>{order.address.firstName + " " + order.address.lastName}</p>
+              </div>
+              <p className='order-item-name'>{order.address.name}</p>
               <div className='order-item-address'>
-                <p>{order.address.street + ","}</p>
-                <p>{order.address.city + ", " + order.address.state + ", " + order.address.country + ", " + order.address.zipcode}</p>
+                <p>{order.address.place + ","}</p>
+                <p>{order.address.zipcode}</p>
               </div>
               <p className='order-item-phone'>{order.address.phone}</p>
             </div>

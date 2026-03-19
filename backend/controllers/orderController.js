@@ -26,7 +26,7 @@ const placeOrder = async (req, res) => {
                 price_data: {
                     currency: "inr",
                     product_data: { name: item?.name },
-                    unit_amount: item.price * 100 * 80
+                    unit_amount: (item.price * req.body.weight * 2)
                 },
                 quantity: item.quantity
             }
@@ -37,7 +37,7 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: "Delivery Charges"
                 },
-                unit_amount: 2 * 100 * 80
+                unit_amount: 20
             },
             quantity: 1
         });
@@ -81,7 +81,7 @@ const verifyOrder = async (req, res) => {
 // user orders for frontend
 const userOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({ userId: req.body?.userId });
+        const orders = await orderModel.find({ userId: req.body?.userId }).sort({'_id': -1});
         res.json({ success: true, data: orders });
     } catch (error) {
         console.log(error);

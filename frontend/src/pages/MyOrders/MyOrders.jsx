@@ -32,13 +32,27 @@ const MyOrders = () => {
                     return (
                         <div key={index} className='my-orders-order'>
                             <img src={assets.parcel_icon} alt="parcelicon" />
-                            <p>{order?.items.map((item, index) => {
-                                if (index === order.items.length - 1) {
-                                    return item.name + " X " + item?.quantity
-                                } else {
-                                    return item.name + " X " + item?.quantity + ","
-                                }
-                            })}</p>
+                            <div>
+                                {order?.items.map((item, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <p>{item.name} <span>X</span> {item.quantity}</p>
+                                            {item[item._id]?.map((orderInfo, index) => {
+                                                return (
+                                                    <div key={index} className='item-list'>
+                                                        <div>
+                                                            Weight: <span>{orderInfo.weight} kg</span>
+                                                        </div>
+                                                        <div>
+                                                            Message: <span>{orderInfo.message}</span>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                    )
+                                })}
+                            </div>
                             <p>Rs. {order?.amount}.00</p>
                             <p>Items: {order.items.length}</p>
                             <p><span>&#x25cf;</span> <b>{order.status}</b></p>

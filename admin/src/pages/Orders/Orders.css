@@ -1,4 +1,4 @@
-.order-item{
+.order-item {
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
     align-items: start;
@@ -10,12 +10,20 @@
     color: #505050;
 }
 
-.order-item-food, .order-item-name {
+.order-item-food,
+.order-item-name {
     font-weight: 600;
 }
 
 .order-item-food span {
     color: tomato;
+}
+
+.order-item-food .item-list {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px 5px 5px;
+    font-weight: 400;
 }
 
 .order-item-name {
@@ -41,10 +49,12 @@
         grid-template-columns: 0.5fr 2fr 1fr;
         padding: 15px 8px;
     }
+
     .order-item select {
         padding: 5px;
         font-size: 12px;
     }
+
     .order-item img {
         width: 40px;
     }

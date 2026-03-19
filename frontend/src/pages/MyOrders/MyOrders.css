@@ -23,13 +23,20 @@
     width: 50px;
 }
 
-.my-orders-order p span {
+.my-orders-order span {
     color: tomato;
 }
 
 .my-orders-order p b {
     font-weight: 500;
     color: #454545;
+}
+
+.my-orders-order .item-list {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px 5px 5px;
+    font-weight: 400;
 }
 
 .my-orders-order button {

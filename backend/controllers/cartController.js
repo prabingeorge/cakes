@@ -4,11 +4,17 @@ import userModel from "../models/userModel.js";
 const addToCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
+        const data = req.body?.data;
         let cartData = await userData.cartData;
         if (!cartData[req.body.itemId]) {
-            cartData[req.body.itemId] = 1;
+            data.foodId = 1;
+            cartData[req.body.itemId] = [data];
         } else {
-            cartData[req.body.itemId] += 1;
+            let maxValue = cartData[req.body.itemId].reduce((acc, value) => {
+                return (acc = acc > value.foodId ? acc : value.foodId);
+            }, 0);
+            data.foodId = maxValue + 1;
+            cartData[req.body.itemId].push(data);
         }
         await userModel.findByIdAndUpdate(req.body.userId, { cartData });
         res.json({ success: true, message: "Added To Cart" });
@@ -23,8 +29,9 @@ const removeFromCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
         let cartData = await userData.cartData;
-        if (cartData[req.body.itemId] > 0) {
-            cartData[req.body.itemId] -= 1;
+        if (cartData[req.body.itemId].length > 0) {
+            const data = req.body?.data;
+            cartData[req.body.itemId] = cartData[req.body.itemId].filter((cart) => !(cart.weight == data.weight && cart.foodId == data.foodId))
         }
         await userModel.findByIdAndUpdate(req.body.userId, { cartData });
         res.json({ success: true, message: "Removed From Cart" });
