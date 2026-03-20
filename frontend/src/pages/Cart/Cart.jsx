@@ -3,6 +3,7 @@ import './Cart.css';
 import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { assets } from '../../assets/assets';
 
 const Cart = () => {
 
@@ -16,6 +17,19 @@ const Cart = () => {
     }
 
     navigate('/order');
+  }
+
+  const continueShopping = () => {
+    navigate('/home');
+  }
+
+  if (totalCartAmount == 0) {
+    return (
+      <div className='cart-empty'>
+        <img className='empty_bucket_icon' src={assets.empty_bucket_icon} alt="empty bucket icon" />
+        <button onClick={() => continueShopping()}>Continue Shopping</button>
+      </div>
+    )
   }
 
   return (
@@ -45,9 +59,9 @@ const Cart = () => {
                   <div>
                     {cartItems[item?._id]?.map((food, index) => {
                       return (
-                        <div key={index} className='cart-items-food'>
+                        <div key={index} className='cart-items-food food-list'>
                           <p>Rs. {item?.price}</p>
-                          <p>{food?.weight}kg</p>
+                          <p>{food?.weight} {food?.weight == 0.5? 'gm': 'kg'}</p>
                           <p>Rs. {item?.price * food?.weight * 2}</p>
                           <p onClick={() => removeFromCart(item?._id, food)} className='cross'>x</p>
                         </div>
@@ -90,6 +104,7 @@ const Cart = () => {
               <button>Submit</button>
             </div>
           </div>
+          <button onClick={() => continueShopping()}>Continue Shopping</button>
         </div>
       </div>
     </div>

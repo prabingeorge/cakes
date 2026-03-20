@@ -17,6 +17,12 @@
     height: 323px;
 }
 
+.item-details-left .description-text {
+    font-size: 12px;
+    text-align: justify;
+    margin: 10px 0px;
+}
+
 .item-details-left input {
     margin-bottom: 15px;
     width: 100%;

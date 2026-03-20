@@ -10,6 +10,7 @@
 .explore-menu-text {
     max-width: 60%;
     columns: #808080;
+    text-align: justify;
 }
 .explore-menu-list{
     display: flex;
@@ -53,6 +54,7 @@
     .explore-menu-text {
         max-width: 100%;
         font-size: 14px;
+        text-align: justify;
     }
 }
 

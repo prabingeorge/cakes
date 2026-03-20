@@ -1,6 +1,7 @@
 .cart {
     margin-top: 100px;
 }
+
 .cart-items-title {
     display: grid;
     /* grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr; */
@@ -9,45 +10,61 @@
     color: grey;
     font-size: max(1vw, 12px);
 }
+
 .cart-items-item {
     margin: 10px 0px;
     color: #000;
 }
+
 .cart-items-item img {
     width: 50px;
+    margin-right: 5px;
 }
+
 .cart hr {
     height: 1px;
     background-color: #e2e2e2;
     border: none;
 }
-.cart-items-item  .cross {
+
+.cart-items-item .cross {
     cursor: pointer;
+    text-align: -webkit-center;
 }
+
 .cart-items-food {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.5fr;
 }
+
+.cart-items-food.food-list {
+    margin: 10px 0px;
+}
+
 .cart-bottom {
     margin-top: 80px;
     display: flex;
     justify-content: space-between;
     gap: max(12vw, 20px);
 }
+
 .cart-total {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
+
 .cart-total-details {
     display: flex;
     justify-content: space-between;
     color: #555;
 }
+
 .cart-total hr {
     margin: 10px 0px;
 }
+
 .cart-total button {
     border: none;
     color: #fff;
@@ -57,12 +74,25 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 .cart-promocode {
     flex: 1;
 }
+
+.cart-promocode button {
+    width: max(10vw, 150px);
+    padding: 12px 5px;
+    background-color: #ffe8e4;
+    border: none;
+    color: #a52a2a ;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .cart-promocode p {
     color: #555;
 }
+
 .cart-promocode-input {
     margin-top: 10px;
     display: flex;
@@ -71,12 +101,14 @@
     background-color: #eaeaea;
     border-radius: 4px;
 }
+
 .cart-promocode-input input {
     background: transparent;
     border: none;
     outline: none;
     padding-left: 10px;
 }
+
 .cart-promocode-input button {
     width: max(10vw, 150px);
     padding: 12px 5px;
@@ -85,11 +117,37 @@
     color: #fff;
     border-radius: 4px;
 }
+
 @media (max-width: 750px) {
-    .cart-bottom{
+    .cart-bottom {
         flex-direction: column-reverse;
     }
+
     .cart-promocode {
         justify-content: start;
+    }
+}
+
+.cart-empty {
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+    .empty_bucket_icon {
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button {
+        border: none;
+        color: #fff;
+        background-color: tomato;
+        width: max(15vw, 100px);
+        padding: 6px 0px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        margin: auto;
     }
 }

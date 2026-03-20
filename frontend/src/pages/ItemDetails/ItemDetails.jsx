@@ -36,22 +36,23 @@ const ItemDetails = () => {
         <form className='item-details'>
             <div className='item-details-left'>
                 <img className='food-item-image' src={`${appUrl}/api/food/image/${id}`} alt={name} />
+                <p className='description-text'><b>NOTE:</b> Design and icing of cake may vary from the image shown here since each chef has his/her own way of baking and designing a cake.</p>
             </div>
             <div className='item-details-right'>
                 <div className="cart-total">
                     <h2>{cartSelectedItem?.name}</h2>
                     <div>
                         <div className="cart-total-details">
-                            <p>Rs. {(cartSelectedItem?.price * data?.weight * 2)}</p>
+                            <p><b>Rs. {(cartSelectedItem?.price * data?.weight * 2)}</b></p>
                         </div>
                         <div className="cart-total-details">
                             <p>Weight:</p>
                         </div>
                         <div className="cart-total-details-weight">
-                            <span onClick={() => setWeight(0.5)} className={0.5 === data?.weight ? "active" : ""}>500</span>
-                            <span onClick={() => setWeight(1)} className={1 === data?.weight ? "active" : ""}>1kg</span>
-                            <span onClick={() => setWeight(1.5)} className={1.5 === data?.weight ? "active" : ""}>1.5kg</span>
-                            <span onClick={() => setWeight(2)} className={2 === data?.weight ? "active" : ""}>2kg</span>
+                            <span onClick={() => setWeight(0.5)} className={0.5 === data?.weight ? "active" : ""}>500 gm</span>
+                            <span onClick={() => setWeight(1)} className={1 === data?.weight ? "active" : ""}>1 kg</span>
+                            <span onClick={() => setWeight(1.5)} className={1.5 === data?.weight ? "active" : ""}>1.5 kg</span>
+                            <span onClick={() => setWeight(2)} className={2 === data?.weight ? "active" : ""}>2 kg</span>
                         </div>
                         <div className="cart-total-details">
                             <input name='message' onChange={onChangeHandler} value={data?.message} type="text" placeholder='Message on cake' />
