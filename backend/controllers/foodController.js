@@ -29,16 +29,16 @@ const addFood = async (req, res) => {
 
 // get food image
 const getFoodImage = async (req, res) => {
-  const image = await foodModel.findById(req.params.id);
+    const image = await foodModel.findById(req.params.id);
 
-  res.set("Content-Type", image.img.contentType);
-  res.send(image.img.data);
+    res.set("Content-Type", image.img.contentType);
+    res.send(image.img.data);
 };
 
 // all food list
 const listFood = async (req, res) => {
     try {
-        const foods = await foodModel.find({});
+        const foods = await foodModel.find({}, { 'img': 0 });
         res.json({ success: true, data: foods });
     } catch (error) {
         console.log(error);

@@ -37,7 +37,7 @@ const getMenuImage = async (req, res) => {
 // all menu list
 const listMenu = async (req, res) => {
     try {
-        const menus = await menuModel.find({});
+        const menus = await menuModel.find({}, { 'img': 0 });
         res.json({ success: true, data: menus });
     } catch (error) {
         console.log(error);
