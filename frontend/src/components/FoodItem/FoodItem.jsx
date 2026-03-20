@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import './FoodItem.css';
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
-// import { assets } from '../../assets/assets';
+import { assets } from '../../assets/assets';
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, price }) => {
 
     const navigate = useNavigate();
     const { appUrl } = useContext(StoreContext);
 
     const navigateItemDetails = (id) => {
-        navigate('/details/' + id);
+        navigate(`/details/${id}#root`);
     };
 
     return (
@@ -29,10 +29,10 @@ const FoodItem = ({ id, name, price, description, image }) => {
             <div className="food-item-info">
                 <div className="food-item-name-rating">
                     <p>{name}</p>
-                    <img src={image} alt='' />
+                    <img src={assets.rating_starts} alt='' />
                 </div>
-                <p className="food-item-desc">{description}</p>
                 <p className="food-item-price">Rs. {price}</p>
+                <button className='view-button'>View</button>
             </div>
         </div>
     )

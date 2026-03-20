@@ -15,7 +15,7 @@ const StoreContextProvider = (props) => {
     const addToCart = async (itemId, data) => {
         if (!cartItems[itemId]?.length) {
             data.foodId = 1;
-            setCartItems((prev) => ({ ...prev, [itemId]: data }));
+            setCartItems((prev) => ({ ...prev, [itemId]: [data] }));
         } else {
             let maxValue = cartItems[itemId]?.reduce((acc, value) => {
                 return (acc = acc > value.foodId ? acc : value.foodId);

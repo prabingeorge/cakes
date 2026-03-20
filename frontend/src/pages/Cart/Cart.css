@@ -1,5 +1,21 @@
 .cart {
-    margin-top: 100px;
+    margin-top: 30px;
+}
+
+.cart-items .cart-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .navigate-button {
+        margin-bottom: 20px;
+        color: #a52a2a;
+    }
+
+    .left-arrow-icon {
+        width: 30px;
+        height: 15px;
+    }
 }
 
 .cart-items-title {
@@ -65,7 +81,7 @@
     margin: 10px 0px;
 }
 
-.cart-total button {
+.checkout-button {
     border: none;
     color: #fff;
     background-color: tomato;
@@ -73,20 +89,22 @@
     padding: 12px 0px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .cart-promocode {
     flex: 1;
 }
 
-.cart-promocode button {
+.shopping-button {
     width: max(10vw, 150px);
     padding: 12px 5px;
     background-color: #ffe8e4;
     border: none;
-    color: #a52a2a ;
+    color: #a52a2a;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .cart-promocode p {
@@ -109,7 +127,7 @@
     padding-left: 10px;
 }
 
-.cart-promocode-input button {
+.promocode-button {
     width: max(10vw, 150px);
     padding: 12px 5px;
     background-color: #000;
@@ -120,7 +138,8 @@
 
 @media (max-width: 750px) {
     .cart-bottom {
-        flex-direction: column-reverse;
+        flex-direction: column;
+        margin-top: 50px;
     }
 
     .cart-promocode {

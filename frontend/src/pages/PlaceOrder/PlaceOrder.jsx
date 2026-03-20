@@ -90,7 +90,7 @@ const PlaceOrder = () => {
               <b>Rs. {totalCartAmount === 0 ? 0 : totalCartAmount + 20}</b>
             </div>
           </div>
-          <button type='submit'>CASH ON DELIVERY</button>
+          <button className='delivery-button' type='submit'>CASH ON DELIVERY</button>
         </div>
       </div>
     </form>

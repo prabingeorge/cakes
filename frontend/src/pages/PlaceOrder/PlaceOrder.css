@@ -3,7 +3,7 @@
     align-items: start;
     justify-content: space-between;
     gap: 50px;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 .place-order-left {
@@ -36,8 +36,14 @@
     max-width: max(40%, 500px);
 }
 
-.place-order .cart-total,
-button {
+.delivery-button {
+    border: none;
+    color: #fff;
+    background-color: tomato;
+    width: max(15vw, 200px);
+    padding: 12px 0px;
+    border-radius: 4px;
+    cursor: pointer;
     margin-top: 30px;
 }
 

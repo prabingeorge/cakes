@@ -13,7 +13,8 @@ const ItemDetails = () => {
 
     const [data, setData] = useState({
         message: "",
-        weight: 0.5
+        weight: 0.5,
+        quantity: 1
     });
 
     const setWeight = (weightValue) => {
@@ -39,26 +40,26 @@ const ItemDetails = () => {
                 <p className='description-text'><b>NOTE:</b> Design and icing of cake may vary from the image shown here since each chef has his/her own way of baking and designing a cake.</p>
             </div>
             <div className='item-details-right'>
-                <div className="cart-total">
+                <div className="add-to-cart">
                     <h2>{cartSelectedItem?.name}</h2>
                     <div>
-                        <div className="cart-total-details">
+                        <div className="add-to-cart-details">
                             <p><b>Rs. {(cartSelectedItem?.price * data?.weight * 2)}</b></p>
                         </div>
-                        <div className="cart-total-details">
+                        <div className="add-to-cart-details">
                             <p>Weight:</p>
                         </div>
-                        <div className="cart-total-details-weight">
+                        <div className="add-to-cart-details-weight">
                             <span onClick={() => setWeight(0.5)} className={0.5 === data?.weight ? "active" : ""}>500 gm</span>
                             <span onClick={() => setWeight(1)} className={1 === data?.weight ? "active" : ""}>1 kg</span>
                             <span onClick={() => setWeight(1.5)} className={1.5 === data?.weight ? "active" : ""}>1.5 kg</span>
                             <span onClick={() => setWeight(2)} className={2 === data?.weight ? "active" : ""}>2 kg</span>
                         </div>
-                        <div className="cart-total-details">
+                        <div className="add-to-cart-details">
                             <input name='message' onChange={onChangeHandler} value={data?.message} type="text" placeholder='Message on cake' />
                         </div>
                     </div>
-                    <button type='button' onClick={placeOrder}>ADD TO CART</button>
+                    <button type='button' className='button' onClick={placeOrder}>ADD TO CART</button>
                 </div>
                 <div className="product-section">
                     <div>
